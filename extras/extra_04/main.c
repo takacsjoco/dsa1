@@ -1,6 +1,14 @@
 #include <stdio.h>
+#include "function.h"
 
-int main(void) {
-    printf("Hello, World!\n");
+int main(void)
+{
+    char s;
+    printf("%c", balancedStringSplit(char *s));
+
+
     return 0;
 }
+
+
+
