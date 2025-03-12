@@ -16,11 +16,14 @@ void printStudent(Student_t student) {
     printf("\nVizsgajegy: %.2f",student.examResult);
 }
 void readStudentDetails(Student_t *pStudent) {
+    scanf("%d", &pStudent->examResult);
     scanf("%s",pStudent->name);
     //scanf("%s",(*pStudent).name);
-
-    scanf("%d",&pStudent->gender);
+    scanf("%d", &pStudent->neptun);
+    scanf("%d",&pStudent->birthPlace);
     scanf("%d",&pStudent->birthDate);
+    scanf("%d", &pStudent->neptun);
+    scanf("%d", &pStudent->gender);
 }
 
 void readAllStudentsDetails(Student_t **dpStudents, int *numberOfStudents, const char *input) {
