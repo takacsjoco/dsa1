@@ -32,5 +32,16 @@ void readStudentDetails(Student_t *pStudent);
 * Prints all details of a student
 * @param student
 */
+
+void readAllStudentsDetails(Student_t **dpStudents, int
+*numberOfStudents, const char *input);
+
+void allocateMemoryForStudents(Student_t **dpStudents, int
+numberOfStudents);
+
+void printAllStudents(Student_t *pStudents, int numberOfStudents, const
+char *destination);
+
+
 #endif //STUDENT_H
 #endif //DSA1_STUDENT_H
