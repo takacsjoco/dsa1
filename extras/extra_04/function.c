@@ -5,7 +5,9 @@
 #include <string.h>
 #include "function.h"
 
-int balancedStringSplit(char *s) {
+///Extra feladat 4. het
+
+/*int balancedStringSplit(char *s) {
         int balance=0;
         int count=0;
         for(int i=0;i<strlen(s);i++){
@@ -19,5 +21,25 @@ int balancedStringSplit(char *s) {
                 count++;
         }
         return count;
+    }*/
+
+///Extra feladat 5. het
+
+bool checkValidString(char *s) {
+    int left_min = 0, left_max = 0;
+    for (int i = 0; s[i] != '\0'; ++i) {
+        if (s[i] == '(')
+            left_min++, left_max++;
+        else if (s[i] == ')')
+            left_min--, left_max--;
+        else
+            left_min--, left_max++;
+        if (left_max < 0)
+            return false;
+        if (left_min < 0)
+            left_min = 0;
     }
+    return left_min == 0;
+}
+
 
