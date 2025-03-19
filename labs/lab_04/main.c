@@ -1,6 +1,18 @@
 #include <stdio.h>
+#include "cmake-build-debug/array.h"
 
 int main(void) {
-    printf("Hello, World!\n");
+    IntArray array;
+    createIntArray(10, &array);
+    printArray(array);
+    isEmpty(array);
+    isFull(array);
+    insertLast(&array, 5 );
+    insertFirst(&array, 1 );
+
+
+
+
+    deallocateIntArray(&array);
     return 0;
 }
