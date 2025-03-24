@@ -13,6 +13,14 @@
 
 ///Extra feladat 5. het
 
-bool checkValidString(char* s);
+//bool checkValidString(char* s);
+
+///Extra feladat 6. het
+
+int** reconstructQueue(int** people, int peopleSize, int* peopleColSize, int* returnSize, int** returnColumnSizes);
+
+void printQueue(int** queue, int queueSize);
+
+int compare(const void *a, const void *b);
 
 #endif //EXTRA_03_FUNCTION_H
