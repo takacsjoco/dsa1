@@ -3,4 +3,4 @@ project(lab_04 C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(lab_04 main.c cmake-build-debug/array.c cmake-build-debug/array.h)
+add_executable(lab_04 main.c cmake-build-debug/array.c cmake-build-debug/array.h cmake-build-debug/array.c cmake-build-debug/array.h)
