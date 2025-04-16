@@ -31,8 +31,19 @@ void insertAfter(Node *prev_ref, int new_data) {
 }
 
 void insertAtEnd(Node **head_ref, int new_data) {
-    
+    if (*head_ref==NULL) {
+        insertAtBeginning(head_ref, new_data);
+    }
+    else {
+        Node *new_node = newNode(new_data);
+        Node *temp = *head_ref;
+        while (temp->next!=NULL) {
+            temp=temp->next;
+        }
+        temp->next=new_node;
+    }
 }
+
 
 void printList(Node *node) {
     while (node != NULL) {
@@ -40,4 +51,13 @@ void printList(Node *node) {
         node = node->next;
     }
     printf("NULL\n");
+}
+
+void destroyList(Node **head_ref) {
+    while (*head_ref == NULL) {
+        Node *temp = *head_ref;
+        *head_ref = (*head_ref)->next;
+        free(temp);
+    }
+    head_ref = NULL;
 }

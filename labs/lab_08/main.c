@@ -18,5 +18,8 @@ int main(void) {
     insertAtBeginning(&head, 1);
     printList(head);
 
+    insertAtEnd(&head, 7);
+    printList(head);
+
     return 0;
 }

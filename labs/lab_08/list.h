@@ -86,4 +86,8 @@ void sortLinkedList(Node** head_ref);
 */
 void printList(Node* node);
 
+void destroyList(Node **head_ref);
+
+
+
 #endif //LIST_H
