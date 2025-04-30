@@ -45,7 +45,7 @@ void insertAtEnd(Node **head_ref, int new_data) {
 }
 
 void deleteFromBeginning(Node **head_ref) {
-    
+
 }
 
 
