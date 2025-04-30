@@ -5,4 +5,7 @@ set(CMAKE_C_STANDARD 23)
 
 add_executable(lab_09 main.c
         list.c
-        list.h)
+        list.h
+        binarySearchTree.c
+        binarySearchTree.h
+        barat.h)

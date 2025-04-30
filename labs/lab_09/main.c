@@ -26,6 +26,6 @@
                  }
              }
         printList(head);
-
+        freopen("CON", "r", stdin);
     return 0;
 }
