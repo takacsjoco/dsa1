@@ -10,8 +10,8 @@ void * newNode_BST(Barat data) {
     if(!node) {
         exit(-1);
     }
-    node->data =  ;
-    node->left = NULL ;
+    node->data = data;
+    node->left = NULL;
     node->right= NULL;
     return node;
 }
@@ -23,7 +23,7 @@ void * insert_BST(TreeNode *node, Barat key) {
     if (key < node->data) {
         node->left = insert_BST(node->left, key);
     }
-    
+
     return node;
 }
 
