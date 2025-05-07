@@ -9,24 +9,15 @@
 #ifndef FRIEND_H
 #define FRIEND_H
 
-typedef struct Datum {
-    int ev;
-    int honap;
-    int nap;
-} Datum;
+#include <stdbool.h>
+#include "barat.h"  // Itt történik a Barat és Datum típusok beemelése
 
-typedef struct Barat {
-    char nev[100];
-    Datum szuletesiDatum;
-    char nem;
-    int bulizas;
-} Barat;
-
-typedef struct Node{
+typedef struct Node {
     Barat data;
     struct Node* next;
-}Node;
+} Node;
 
+// Függvénydeklarációk
 Node* newNode(Barat new_data);
 bool isEmpty(Node *head);
 void insertAtBeginning(Node** head_ref, Barat new_data);
@@ -40,6 +31,4 @@ void sortLinkedList(Node** head_ref);
 void printList(Node* node);
 void destroyList(Node **head_ref);
 
-
-
-#endif //FRIEND_H
+#endif // FRIEND_H
