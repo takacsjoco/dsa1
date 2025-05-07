@@ -3,38 +3,40 @@
 //
 
 #include "binarySearchTree.h"
+
+#include <stdio.h>
 #include <stdlib.h>
 
-void * newNode_BST(Barat data) {
-    TreeNode *node = (TreeNode*)malloc(sizeof(TreeNode));
-    if(!node) {
-        exit(-1);
+NodeTree *createNewNode(int newData) {
+    NodeTree *newItem = (NodeTree*) malloc(sizeof (NodeTree));
+
+    newItem->info = newData;
+    newItem->left = newItem->right = NULL ;
+    return newItem;
+}
+
+NodeTree *insertLeft(NodeTree *root, int newData) {
+    root->left = createNewNode(newData);
+    return root->left;
+}
+
+NodeTree *insertRight(NodeTree *root, int newData) {
+    root->right= createNewNode(newData);
+    return root->right;
+}
+
+void inorderTraversal(NodeTree *root) {
+    if(root == NULL) return;
+    inorderTraversal(root->left);
+    printf("%d ", root->info);
+    inorderTraversal(root->right);
+}
+
+void destroyBinaryTree(NodeTree **root) {
+    if ((*root) != NULL) {
+        destroyBinaryTree(&(*root)->left);
+        destroyBinaryTree(&(*root)->right);
+        free(*root);
+        *root = NULL;
     }
-    node->data = data;
-    node->left = NULL;
-    node->right= NULL;
-    return node;
-}
-
-void * insert_BST(TreeNode *node, Barat key) {
-    if (node == NULL) {
-        return newNode_BST(key);
-    }
-    if (key < node->data) {
-        node->left = insert_BST(node->left, key);
-    }
-
-    return node;
-}
-
-void inorderTraversal_BST(TreeNode *root) {
-}
-
-void * minValueNode(TreeNode *node) {
-}
-
-void * maxValueNode(TreeNode *node) {
-}
-
-void * deleteNode(TreeNode *root, Barat key) {
 }

@@ -3,35 +3,42 @@
 //
 
 #include "list.h"
-
-#include <stddef.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-Node * newNode(Barat new_data) {
-    Node *node = (Node*)malloc(sizeof(Node));
-    if(!node) {
-        exit(-1);
+Node *newNode(Barat data) {
+    Node *node = (Node *)malloc(sizeof(Node));
+    if (!node) {
+        exit (-1);
     }
-    node->data = new_data;
-    node->next = NULL;
+    node->data = data;
+    node->next=NULL;
     return node;
 }
 
-void insertAtBeginning(Node **head_ref, Barat new_data) {
-    Node *new_node = newNode(new_data);
-    new_node->next = *head_ref;
-    *head_ref = new_node;
-}
-
-void insertAfter(Node *prev_ref, Barat new_data) {
+void insertAfter(Node* prev_ref, Barat new_data) {
     Node *temp = prev_ref->next;
     Node *new_node = newNode(new_data);
-    prev_ref->next = new_node;
-    new_node->next = temp;
+    prev_ref->next=new_node;
+    new_node->next=temp;
+
 }
 
-void insertAtEnd(Node **head_ref, Barat new_data) {
+void printList(Node* node) {
+    while (node!=NULL) {
+        printf("%s; %d; %d; %d; %c; %d  ", node->data.nev, node->data.szuletesiDatum.ev, node->data.szuletesiDatum.honap, node->data.szuletesiDatum.nap, node->data.nem, node->data.bulizas);
+        printf("\n");
+        node = node->next;
+    }
+}
+
+void insertAtBeginning(Node** head_ref, Barat new_data) {
+    Node *new_node = newNode(new_data);
+    new_node->next=*head_ref;
+    *head_ref=new_node;
+}
+
+void insertAtEnd(Node** head_ref, Barat new_data) {
     if (*head_ref==NULL) {
         insertAtBeginning(head_ref, new_data);
     }
@@ -46,23 +53,18 @@ void insertAtEnd(Node **head_ref, Barat new_data) {
 }
 
 void deleteFromBeginning(Node **head_ref) {
-
-}
-
-
-void printList(Node *node) {
-    while (node != NULL) {
-        printf("%s %i %c %i %i %i -> ", node->data.nev, node->data.bulizas, node->data.nem, node->data.szuletesiDatum.ev, node->data.szuletesiDatum.honap, node->data.szuletesiDatum.nap);
-        node = node->next;
+    if (*head_ref==NULL) {
     }
-    printf("NULL\n");
+    Node *temp = *head_ref;
+    *head_ref=temp->next;
+    free(temp);
 }
 
 void destroyList(Node **head_ref) {
-    while (*head_ref == NULL) {
+    while (*head_ref==NULL) {
         Node *temp = *head_ref;
-        *head_ref = (*head_ref)->next;
+        *head_ref=(*head_ref)->next;
         free(temp);
     }
-    head_ref = NULL;
+    head_ref=NULL;
 }
