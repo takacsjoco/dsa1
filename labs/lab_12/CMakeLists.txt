@@ -3,4 +3,8 @@ project(lab_12 C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(lab_12 main.c)
+add_executable(lab_12 main.c
+        konyv.h
+        konyv.c
+        bst.c
+        bst.h)
