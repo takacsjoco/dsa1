@@ -1,0 +1,121 @@
+**Adatszerkezetek és algoritmusok – C nyelven: Rövid összefoglaló példákkal**
+
+---
+
+1. **Algoritmusok műveletigénye, Projekt szerkezete**
+```c
+// Összegzés O(n) időben
+int osszeg(int tomb[], int meret) {
+    int sum = 0;
+    for (int i = 0; i < meret; i++) sum += tomb[i];
+    return sum;
+}
+```
+
+---
+
+2. **Struktúra típus. Felsorolás típus**
+```c
+typedef struct {
+    char nev[20];
+    int kor;
+} Ember;
+
+enum Nap {HETFO, KEDD, SZERDA}; // 0, 1, 2
+```
+
+---
+
+3. **Tömb struktúra**
+```c
+int tomb[5] = {1, 2, 3, 4, 5};
+printf("%d", tomb[2]); // 3
+```
+
+---
+
+4. **Verem (Stack)** – LIFO
+```c
+#define MERET 100
+int verem[MERET], teteje = -1;
+
+void betesz(int x) { verem[++teteje] = x; }
+int kivesz() { return verem[teteje--]; }
+```
+
+---
+
+5. **Sor (Queue)** – FIFO
+```c
+#define MERET 100
+int sor[MERET], eleje = 0, vege = 0;
+
+void berak(int x) { sor[vege++] = x; }
+int kivesz() { return sor[eleje++]; }
+```
+
+---
+
+6. **Lista (láncolt lista)**
+```c
+typedef struct Node {
+    int adat;
+    struct Node* kov;
+} Node;
+```
+
+---
+
+7. **Bináris fa, Bináris keresőfa (BST)**
+```c
+typedef struct Node {
+    int adat;
+    struct Node* bal;
+    struct Node* jobb;
+} Node;
+
+Node* beszur(Node* gyoker, int ertek) {
+    if (!gyoker) {
+        Node* uj = malloc(sizeof(Node));
+        uj->adat = ertek; uj->bal = uj->jobb = NULL;
+        return uj;
+    }
+    if (ertek < gyoker->adat)
+        gyoker->bal = beszur(gyoker->bal, ertek);
+    else
+        gyoker->jobb = beszur(gyoker->jobb, ertek);
+    return gyoker;
+}
+```
+
+---
+
+8. **Törlés listában, fában. AVL és Piros-fekete fák**
+```c
+// Lista törlés
+void torol(Node** fej, int ertek) {
+    Node* akt = *fej, *elozo = NULL;
+    while (akt && akt->adat != ertek) {
+        elozo = akt; akt = akt->kov;
+    }
+    if (!akt) return;
+    if (!elozo) *fej = akt->kov;
+    else elozo->kov = akt->kov;
+    free(akt);
+}
+```
+// AVL és piros-fekete fák: haladó szint, külön algoritmusokkal (itt nem részletezve).
+
+---
+
+9. **Hasítás (Hashing)** – egyszerű példa
+```c
+#define MERET 10
+int tabla[MERET];
+
+int hash(int kulcs) {
+    return kulcs % MERET;
+}
+```
+
+---
